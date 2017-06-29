@@ -5,11 +5,17 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
+import { HomeComponent } from './containers/home/home.component';
+import { LayoutComponent } from './containers/containers/layout/layout.component';
+import { LoginComponent } from './containers/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent,
+    LayoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
