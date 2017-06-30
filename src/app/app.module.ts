@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -15,6 +15,8 @@ import {RouterModule} from "@angular/router";
 import {routes} from "app/app-routes";
 import {AngularFireModule} from "angularfire2";
 import {AuthService} from "./services/auth.service";
+import {AuthGuardService} from "app/services/auth-guard.service";
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCTmkHvgG7Nf2kbPXQExbDzhwhdR9zmjsw",
@@ -24,6 +26,13 @@ export const firebaseConfig = {
   storageBucket: "",
   messagingSenderId: "160287043821"
 };
+
+export function loadUser(auth: AuthService) {
+  return function () {
+    return auth.loadUser();
+
+  }
+}
 
 @NgModule({
   declarations: [
@@ -43,7 +52,12 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routes),
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService, {
+    provide: APP_INITIALIZER,
+    useFactory: loadUser,
+    deps: [AuthService],
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
