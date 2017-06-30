@@ -1,3 +1,23 @@
-<p>
-  login works!
-</p>
+<form class="LoginForm" autocomplete="off" novalidate #loginForm="ngForm">
+  <a class="LoginForm-regLink Link Link--noUnderline">register</a>
+
+  <img class="LoginForm-logo" src="null"/>
+
+  <h2 class="LoginForm-title">
+    <span class="Text--highlight">GEO</span> chat App
+  </h2>
+
+  <div class="LoginForm-subtitle">Project</div>
+  <div class="LoginForm-formControl">
+    <input type="text" class="InputControl LoginForm-input" placeholder="email" name="email" [(ngModel)]="user.email" required email>
+  </div>
+  <div class="LoginForm-formControl">
+    <input type="text" class="InputControl LoginForm-input" placeholder="nickname" name="nickname" [(ngModel)]="user.nickname" required>
+  </div>
+
+  <div class="LoginForm-forgetLink">
+    Forgot your password? <a class="Link">Retrieve</a>
+  </div>
+
+  <button class="Btn Btn--submit LoginForm-submitBtn" (click)="login(loginForm)" >Login</button>
+</form>

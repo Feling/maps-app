@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import {AngularFire } from 'angularfire2';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/toPromise';
 
 export interface IUser {
   email: string;
   nickname: string;
-  $key: string;
+  $key?: string;
 }
 
 @Injectable()
