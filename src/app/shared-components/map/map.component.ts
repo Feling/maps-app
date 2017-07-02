@@ -1,5 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
-
+import { } from '@types/googlemaps';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
